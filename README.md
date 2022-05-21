@@ -10,6 +10,16 @@ Very simple to use, no build scripts, no installation scripts. First start aria2
 aria2c --enable-rpc --rpc-listen-all
 ```
 
+All downloaded files will be place on torrent folder by this command!
+
+```bash
+#!/bin/sh
+
+tmux new -d -c /home/pi/disk1/torrent -s aria2rpc 'aria2c --rpc-secret=654321 --enable-rpc --rpc-listen-all --max-connection-per-server=8 --min-split-size=1M'
+
+tmux new -d -c /home/pi/disk1/webui-aria2/docs/ -s aria2webui 'python3 -m http.server 8600'
+```
+
 If aria2 is not installed in your local machine then head on to https://aria2.github.io/ and follow the instructions there.
 
 Then to use the WebUI-Aria2,
